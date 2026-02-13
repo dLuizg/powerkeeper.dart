@@ -1,11 +1,9 @@
-Based on what I can see from the GitHub repository page, I'll create a comprehensive README.md for the Dart portion of the PowerKeeper project. Since the repository shows it's a command-line application with code in bin/ and lib/, I'll create a README that fits this structure:
-
-🖥️ PowerKeeper.dart - Sistema de Gerenciamento e Análise
+#🖥️ PowerKeeper.dart - Sistema de Gerenciamento e Análise#
 Backend e Interface de Linha de Comando do PowerKeeper
 Desenvolvido por Luiz Gustavo, Matteo e Nicolas
 Ciência da Computação | Unifeob 2025.1 e 2025.2
 
-📘 Visão Geral
+#📘 Visão Geral#
 O PowerKeeper.dart é o módulo de backend e gerenciamento do sistema PowerKeeper, responsável por processar, analisar e administrar os dados coletados pelos dispositivos IoT ESP32. Implementado em Dart, oferece uma interface de linha de comando robusta para operações administrativas e análise de dados energéticos.
 Este módulo se conecta ao Firebase Realtime Database para recuperar leituras dos sensores, realizar cálculos estatísticos, gerar relatórios e gerenciar o cadastro de dispositivos e usuários do sistema.
 
@@ -372,3 +370,4 @@ FAQ
 
 💡 Dica: Execute dart run bin/powerkeeper.dart --help para ver todos os comandos disponíveis e suas opções.
 🔗 Integração: Este módulo trabalha em conjunto com o PowerKeeper IoT para formar o sistema completo de monitoramento energético.
+
