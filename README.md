@@ -1,55 +1,60 @@
-#🖥️ PowerKeeper.dart - Sistema de Gerenciamento e Análise#
-Backend e Interface de Linha de Comando do PowerKeeper
-Desenvolvido por Luiz Gustavo, Matteo e Nicolas
+# 🖥️ PowerKeeper.dart - Sistema de Gerenciamento e Análise
+
+**Backend e Interface de Linha de Comando do PowerKeeper**  
+Desenvolvido por **Luiz Gustavo, Matteo e Nicolas**  
 Ciência da Computação | Unifeob 2025.1 e 2025.2
 
-#📘 Visão Geral#
-O PowerKeeper.dart é o módulo de backend e gerenciamento do sistema PowerKeeper, responsável por processar, analisar e administrar os dados coletados pelos dispositivos IoT ESP32. Implementado em Dart, oferece uma interface de linha de comando robusta para operações administrativas e análise de dados energéticos.
+---
+
+## 📘 Visão Geral
+
+O **PowerKeeper.dart** é o módulo de backend e gerenciamento do sistema PowerKeeper, responsável por processar, analisar e administrar os dados coletados pelos dispositivos IoT ESP32. Implementado em Dart, oferece uma interface de linha de comando robusta para operações administrativas e análise de dados energéticos.
+
 Este módulo se conecta ao Firebase Realtime Database para recuperar leituras dos sensores, realizar cálculos estatísticos, gerar relatórios e gerenciar o cadastro de dispositivos e usuários do sistema.
 
-⚙️ Funcionalidades Principais
-📊 Análise de Dados
+---
 
-Processamento de leituras em tempo real do Firebase
-Cálculos estatísticos: média, máximo, mínimo, desvio padrão
-Análise de tendências de consumo ao longo do tempo
-Detecção de anomalias em padrões de uso energético
-Agregação de dados por período (diário, semanal, mensal)
+## ⚙️ Funcionalidades Principais
 
-📈 Geração de Relatórios
+### 📊 Análise de Dados
+- **Processamento de leituras** em tempo real do Firebase
+- **Cálculos estatísticos**: média, máximo, mínimo, desvio padrão
+- **Análise de tendências** de consumo ao longo do tempo
+- **Detecção de anomalias** em padrões de uso energético
+- **Agregação de dados** por período (diário, semanal, mensal)
 
-Relatórios de consumo por dispositivo e período
-Comparativos históricos entre diferentes períodos
-Exportação de dados em formatos CSV, JSON
-Gráficos e visualizações de consumo (ASCII art para CLI)
-Alertas de consumo acima de limiares configurados
+### 📈 Geração de Relatórios
+- **Relatórios de consumo** por dispositivo e período
+- **Comparativos históricos** entre diferentes períodos
+- **Exportação de dados** em formatos CSV, JSON
+- **Gráficos e visualizações** de consumo (ASCII art para CLI)
+- **Alertas de consumo** acima de limiares configurados
 
-🔐 Gerenciamento de Sistema
+### 🔐 Gerenciamento de Sistema
+- **CRUD de dispositivos**: cadastro, edição, exclusão
+- **Gerenciamento de usuários** e níveis de acesso
+- **Configuração de parâmetros** do sistema
+- **Backup e restauração** de dados
+- **Logs de auditoria** de operações administrativas
 
-CRUD de dispositivos: cadastro, edição, exclusão
-Gerenciamento de usuários e níveis de acesso
-Configuração de parâmetros do sistema
-Backup e restauração de dados
-Logs de auditoria de operações administrativas
+### 🔌 Integração com Firebase
+- **Leitura de leituras** da tabela `/leituras`
+- **Acesso a snapshots** via `/ultima_leitura`
+- **Consulta de fechamentos** em `/consumos_diarios`
+- **Sincronização bidirecional** de dados
+- **Cache local** para operações offline
 
-🔌 Integração com Firebase
+### 📡 Interface CLI
+- **Menu interativo** para navegação
+- **Comandos parametrizados** para automação
+- **Output formatado** com cores e tabelas
+- **Modo batch** para scripts e agendamentos
+- **Help system** integrado
 
-Leitura de leituras da tabela /leituras
-Acesso a snapshots via /ultima_leitura
-Consulta de fechamentos em /consumos_diarios
-Sincronização bidirecional de dados
-Cache local para operações offline
+---
 
-📡 Interface CLI
-
-Menu interativo para navegação
-Comandos parametrizados para automação
-Output formatado com cores e tabelas
-Modo batch para scripts e agendamentos
-Help system integrado
-
-
-🗂️ Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
+```
 powerkeeper.dart/
 │
 ├── bin/
@@ -84,82 +89,135 @@ powerkeeper.dart/
 ├── pubspec.yaml                  # Dependências do projeto
 ├── analysis_options.yaml         # Configurações de análise
 └── README.md                     # Este arquivo
+```
 
-🚀 Instalação e Configuração
-Pré-requisitos
+---
 
-Dart SDK >= 3.0.0
-Firebase Account com projeto configurado
-Credenciais Firebase (service account JSON)
+## 🚀 Instalação e Configuração
 
-1️⃣ Instalação do Dart SDK
-Linux/macOS:
-bash# Via Homebrew (macOS)
+### Pré-requisitos
+
+- **Dart SDK** >= 3.0.0
+- **Firebase Account** com projeto configurado
+- **Credenciais Firebase** (service account JSON)
+
+### 1️⃣ Instalação do Dart SDK
+
+**Linux/macOS:**
+```bash
+# Via Homebrew (macOS)
 brew tap dart-lang/dart
 brew install dart
 
 # Via apt (Ubuntu/Debian)
 sudo apt update
 sudo apt install dart
-Windows:
-powershell# Via Chocolatey
+```
+
+**Windows:**
+```powershell
+# Via Chocolatey
 choco install dart-sdk
+```
+
 Verificar instalação:
-bashdart --version
-2️⃣ Clonar o Repositório
-bashgit clone https://github.com/dLuizg/powerkeeper.dart.git
+```bash
+dart --version
+```
+
+### 2️⃣ Clonar o Repositório
+```bash
+git clone https://github.com/dLuizg/powerkeeper.dart.git
 cd powerkeeper.dart
-3️⃣ Instalar Dependências
-bashdart pub get
-4️⃣ Configurar Firebase
+```
 
-Baixe o arquivo de credenciais do Firebase:
+### 3️⃣ Instalar Dependências
+```bash
+dart pub get
+```
 
-Acesse Firebase Console
-Vá em Configurações do Projeto → Contas de Serviço
-Clique em Gerar nova chave privada
-Salve o arquivo como firebase_credentials.json
+### 4️⃣ Configurar Firebase
 
+1. Baixe o arquivo de credenciais do Firebase:
+   - Acesse [Firebase Console](https://console.firebase.google.com/)
+   - Vá em **Configurações do Projeto** → **Contas de Serviço**
+   - Clique em **Gerar nova chave privada**
+   - Salve o arquivo como `firebase_credentials.json`
 
-Configure as variáveis de ambiente:
-
-bash# Linux/macOS
+2. Configure as variáveis de ambiente:
+```bash
+# Linux/macOS
 export FIREBASE_CREDENTIALS_PATH="./firebase_credentials.json"
 export FIREBASE_DATABASE_URL="https://seu-projeto.firebaseio.com"
 
 # Windows (PowerShell)
 $env:FIREBASE_CREDENTIALS_PATH=".\firebase_credentials.json"
 $env:FIREBASE_DATABASE_URL="https://seu-projeto.firebaseio.com"
-Ou crie um arquivo .env:
-envFIREBASE_CREDENTIALS_PATH=./firebase_credentials.json
-FIREBASE_DATABASE_URL=https://seu-projeto.firebaseio.com
+```
 
-💻 Uso
-Executar a Aplicação
-bash# Modo interativo (menu)
+Ou crie um arquivo `.env`:
+```env
+FIREBASE_CREDENTIALS_PATH=./firebase_credentials.json
+FIREBASE_DATABASE_URL=https://seu-projeto.firebaseio.com
+```
+
+---
+
+## 💻 Uso
+
+### Executar a Aplicação
+```bash
+# Modo interativo (menu)
 dart run
 
 # Comando direto
 dart run bin/powerkeeper.dart --help
-Exemplos de Comandos
-Listar Dispositivos
-bashdart run bin/powerkeeper.dart devices list
-Visualizar Leituras de um Dispositivo
-bashdart run bin/powerkeeper.dart readings --device-id 1 --from 2025-02-01 --to 2025-02-13
-Gerar Relatório de Consumo
-bashdart run bin/powerkeeper.dart report --device-id 1 --period monthly --month 02 --year 2025
-Analisar Consumo Diário
-bashdart run bin/powerkeeper.dart analyze daily --date 2025-02-13
-Exportar Dados
-bashdart run bin/powerkeeper.dart export --format csv --output consumo_fevereiro.csv --month 02
-Cadastrar Novo Dispositivo
-bashdart run bin/powerkeeper.dart devices add --name "Máquina de Solda 3" --location "Galpão B"
-Verificar Anomalias
-bashdart run bin/powerkeeper.dart anomalies --threshold 150 --device-id 1
+```
 
-📦 Dependências
-Principais Bibliotecas
-yamldependencies:
+### Exemplos de Comandos
+
+#### Listar Dispositivos
+```bash
+dart run bin/powerkeeper.dart devices list
+```
+
+#### Visualizar Leituras de um Dispositivo
+```bash
+dart run bin/powerkeeper.dart readings --device-id 1 --from 2025-02-01 --to 2025-02-13
+```
+
+#### Gerar Relatório de Consumo
+```bash
+dart run bin/powerkeeper.dart report --device-id 1 --period monthly --month 02 --year 2025
+```
+
+#### Analisar Consumo Diário
+```bash
+dart run bin/powerkeeper.dart analyze daily --date 2025-02-13
+```
+
+#### Exportar Dados
+```bash
+dart run bin/powerkeeper.dart export --format csv --output consumo_fevereiro.csv --month 02
+```
+
+#### Cadastrar Novo Dispositivo
+```bash
+dart run bin/powerkeeper.dart devices add --name "Máquina de Solda 3" --location "Galpão B"
+```
+
+#### Verificar Anomalias
+```bash
+dart run bin/powerkeeper.dart anomalies --threshold 150 --device-id 1
+```
+
+---
+
+## 📦 Dependências
+
+### Principais Bibliotecas
+```yaml
+dependencies:
   # Firebase
   firebase_admin: ^0.3.0           # SDK administrativo Firebase
   firebase_dart: ^1.0.0            # Cliente Firebase para Dart
@@ -183,14 +241,25 @@ dev_dependencies:
   test: ^1.24.0                    # Framework de testes
   mockito: ^5.4.0                  # Mocking para testes
   lints: ^2.1.0                    # Regras de lint
+```
 
-🧪 Testes
-Executar Todos os Testes
-bashdart test
-Executar Testes Específicos
-bashdart test test/services/analytics_service_test.dart
-Cobertura de Testes
-bashdart pub global activate coverage
+---
+
+## 🧪 Testes
+
+### Executar Todos os Testes
+```bash
+dart test
+```
+
+### Executar Testes Específicos
+```bash
+dart test test/services/analytics_service_test.dart
+```
+
+### Cobertura de Testes
+```bash
+dart pub global activate coverage
 dart pub global run coverage:test_with_coverage
 ```
 
@@ -234,10 +303,15 @@ Dispositivo #1 - 2025-02-12 03:22:00
 ├─ Consumo fora do horário: 87.3W
 ├─ Horário atípico: 03:22 AM
 └─ Recomendação: Verificar se equipamento foi deixado ligado
+```
 
-🔧 Configuração Avançada
-Arquivo de Configuração (config.yaml)
-yaml# PowerKeeper Configuration
+---
+
+## 🔧 Configuração Avançada
+
+### Arquivo de Configuração (config.yaml)
+```yaml
+# PowerKeeper Configuration
 app:
   name: "PowerKeeper CLI"
   version: "1.0.0"
@@ -309,65 +383,84 @@ Verificar:
 ✓ URL do database correto
 ✓ Permissões de leitura/escrita no Firebase
 ✓ Conexão com internet ativa
-Comando não encontrado
-bash# Verificar que o Dart está no PATH
+```
+
+### Comando não encontrado
+```bash
+# Verificar que o Dart está no PATH
 echo $PATH | grep dart
 
 # Reinstalar dependências
 dart pub get
-Problemas de Performance
-bash# Limpar cache
+```
+
+### Problemas de Performance
+```bash
+# Limpar cache
 dart pub cache clean
 
 # Recompilar
 dart compile exe bin/powerkeeper.dart -o powerkeeper
+```
 
-🤝 Contribuindo
+---
+
+## 🤝 Contribuindo
+
 Este é um projeto acadêmico, mas sugestões são bem-vindas:
 
-Fork o repositório
-Crie uma branch para sua feature (git checkout -b feature/MinhaFeature)
-Commit suas mudanças (git commit -m 'Adiciona MinhaFeature')
-Push para a branch (git push origin feature/MinhaFeature)
-Abra um Pull Request
+1. Fork o repositório
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
 
+---
 
-📝 Changelog
-v1.0.0 (2025-02-13)
+## 📝 Changelog
 
-✨ Versão inicial do sistema
-📊 Comandos básicos de análise
-🔥 Integração com Firebase
-📈 Geração de relatórios
-🔍 Detecção de anomalias
+### v1.0.0 (2025-02-13)
+- ✨ Versão inicial do sistema
+- 📊 Comandos básicos de análise
+- 🔥 Integração com Firebase
+- 📈 Geração de relatórios
+- 🔍 Detecção de anomalias
 
+---
 
-📄 Licença
+## 📄 Licença
+
 Este projeto faz parte do trabalho acadêmico do curso de Ciência da Computação da Unifeob (2025.1 e 2025.2) e foi desenvolvido para fins educacionais.
 
-👨‍💻 Desenvolvedores
+---
 
-Luiz Gustavo
-Matteo
-Nicolas
+## 👨‍💻 Desenvolvedores
 
-Grupo Synatec | Ciência da Computação | Unifeob
+- **Luiz Gustavo**
+- **Matteo**
+- **Nicolas**
 
-🔗 Repositórios Relacionados
+**Grupo Synatec** | Ciência da Computação | Unifeob
 
-PowerKeeper (Repositório Principal)
-PowerKeeper IoT (ESP32)
-PowerKeeper Database
+---
 
+## 🔗 Repositórios Relacionados
 
-📚 Documentação Adicional
+- [PowerKeeper (Repositório Principal)](https://github.com/seu-repo/powerkeeper)
+- [PowerKeeper IoT (ESP32)](https://github.com/seu-repo/powerkeeper-iot)
+- [PowerKeeper Database](https://github.com/seu-repo/powerkeeper-database)
 
-Guia de Comandos Completo
-Arquitetura do Sistema
-Guia de Desenvolvimento
-FAQ
+---
 
+## 📚 Documentação Adicional
 
-💡 Dica: Execute dart run bin/powerkeeper.dart --help para ver todos os comandos disponíveis e suas opções.
-🔗 Integração: Este módulo trabalha em conjunto com o PowerKeeper IoT para formar o sistema completo de monitoramento energético.
+- [Guia de Comandos Completo](docs/COMMANDS.md)
+- [Arquitetura do Sistema](docs/ARCHITECTURE.md)
+- [Guia de Desenvolvimento](docs/DEVELOPMENT.md)
+- [FAQ](docs/FAQ.md)
 
+---
+
+**💡 Dica**: Execute `dart run bin/powerkeeper.dart --help` para ver todos os comandos disponíveis e suas opções.
+
+**🔗 Integração**: Este módulo trabalha em conjunto com o [PowerKeeper IoT](../powerkeeper-iot) para formar o sistema completo de monitoramento energético.
